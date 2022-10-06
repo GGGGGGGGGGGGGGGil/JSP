@@ -32,6 +32,5 @@
 		<a href="./proc/forward1.jsp">포워드 페이지 요청1</a>
 		<a href="./proc/forward2.jsp">포워드 페이지 요청2</a>
 		
-		
 	</body>
 </html>
