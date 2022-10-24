@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	try{
-		Connection conn = DBCP.getConnection("dbcp_java1_shop");
+		Connection conn = DBCP.getConnection();
 		
 		
 	}catch(Exception e){
