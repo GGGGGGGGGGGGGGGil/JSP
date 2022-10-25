@@ -1,7 +1,8 @@
+<%@page import="kr.co.jboard1.db.Sql"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="config.DBCP"%>
+<%@page import="kr.co.jboard1.db.DBCP"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <script>
@@ -26,7 +27,7 @@
 	try{
 		Connection conn = DBCP.getConnection();
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from `board_terms`");
+		ResultSet rs = stmt.executeQuery(Sql.SELECT_TERMS);
 		
 		if(rs.next()){
 			terms   = rs.getString(1);
@@ -42,7 +43,7 @@
 	}
 %>
 <main id="user" class="terms">
-	<table border="0">
+	<table>
     	<caption>사이트 이용약관</caption>
         	<tr>
             	<td>
@@ -52,7 +53,7 @@
             </tr>
     </table>
     
-   	<table border="0">
+   	<table>
     	<caption>개인정보 취급방침</caption>
         	<tr>
             	<td>

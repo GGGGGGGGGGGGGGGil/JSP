@@ -1,6 +1,7 @@
+<%@page import="kr.co.jboard1.db.Sql"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="config.DBCP"%>
+<%@page import="kr.co.jboard1.db.DBCP"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//전송 데이터 수신
@@ -21,20 +22,7 @@
 	try{
 		Connection conn = DBCP.getConnection();
 		
-		String sql = "INSERT INTO `board_user` SET";
-			   sql += "`uid`  =?,";
-			   sql += "`pass` =SHA2(?, 256),";
-			   sql += "`name` =?,";
-			   sql += "`nick` =?,";
-			   sql += "`email`=?,";
-			   sql += "`hp`   =?,";
-			   sql += "`zip`  =?,";
-			   sql += "`addr1`=?,";
-			   sql += "`addr2`=?,";
-			   sql += "`regip`=?,";
-			   sql += "`rdate`=NOW()";
-		
-		PreparedStatement psmt = conn.prepareStatement(sql);
+		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_USER);
 		psmt.setString(1, uid);
 		psmt.setString(2, pass1);
 		psmt.setString(3, name);
@@ -56,5 +44,5 @@
 	}
 		
 	//리다이렉트
-	response.sendRedirect("../login.jsp");
+	response.sendRedirect("/JBoard1/user/login.jsp");
 %>
