@@ -18,7 +18,6 @@
                     <td>12</td>
                 </tr>
             </table>
-            
             <div class="page">
                 <a href="#" class="prev">이전</a>
                 <a href="#" class="num current">1</a>
@@ -26,7 +25,6 @@
                 <a href="#" class="num">3</a>
                 <a href="#" class="next">다음</a>
             </div>
-
             <a href="/JBoard1/write.jsp" class="btnWrite">글쓰기</a>
         </main>
 <%@ include file="./_footer.jsp" %>
