@@ -268,8 +268,72 @@ public class ArticleDAO { //DAO에서 DBCP 상속받는게 더 편함
 		return comments;
 	}
 	
-	public void updateArticle() {}
-	public void deleteArticle() {}
+	public void updateArticle(String no, String title, String content) {
+		
+		try {
+			Connection conn = DBCP.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
+			psmt.setString(1, title);
+			psmt.setString(2, content);
+			psmt.setString(3, no);
+			
+			psmt.executeUpdate();
+			
+			psmt.close();
+			conn.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void deleteArticle(String no) {
+		try {
+			Connection conn = DBCP.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_ARTICLE);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			
+			psmt.executeUpdate();
+			
+			psmt.close();
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String deleteFile(String parent) {
+		
+		String newName = null;
+		
+		try {
+			Connection conn = DBCP.getConnection();
+			
+			conn.setAutoCommit(false);
+			
+			PreparedStatement psmt1 = conn.prepareStatement(Sql.SELECT_FILE_WITH_PARENT);
+			PreparedStatement psmt2 = conn.prepareStatement(Sql.DELETE_FILE);
+			psmt1.setString(1, parent); //쿼리 파라미터 각각 한개씩 있어서 둘다 1임
+			psmt2.setString(1, parent);
+			
+			ResultSet rs = psmt1.executeQuery();
+			psmt2.executeUpdate();
+			
+			conn.commit();
+			
+			if(rs.next()) {
+				newName = rs.getString(3);
+			}
+			
+			psmt2.close();
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return newName;
+	}
 	
 	//전체 게시물 카운트
 	public int selectCountTotal() {

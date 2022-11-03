@@ -55,7 +55,9 @@ public class Sql {
 											  + "LEFT JOIN `board_file` AS b "
 											  + "ON a.`no` = b.`parent` "
 											  + "WHERE `no`=?";
+	
 	public static final String SELECT_FILE = "select * from `board_file` where `fno`=?";
+	public static final String SELECT_FILE_WITH_PARENT = "select * from `board_file` where `parent`=?";
 	public static final String SELECT_COMMENTS = "SELECT a.*, b.`nick` FROM `board_article` AS a "
 									  		   + "JOIN `board_user` AS b USING (`uid`) "
 											   + "WHERE `parent`=? ORDER BY `no` ASC";
@@ -64,8 +66,15 @@ public class Sql {
 													 + "JOIN `board_user` AS b USING (`uid`) "
 													 + "WHERE `parent` != 0 ORDER BY `no` DESC LIMIT 1";
 	
+	public static final String UPDATE_ARTICLE = "update `board_article` set "
+											  + "`title`=?, `content`=?, `rdate`=NOW() "
+											  + "where `no`=?";
+	
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `board_article` SET `hit` = `hit` + 1 WHERE `no`=?"; //마지막에 파라미터(?) 처리
 	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `board_file` SET `download` = `download` + 1 WHERE `fno`=?";
+	
+	public static final String DELETE_ARTICLE = "delete from `board_article` where `no`=? or `parent`=?";
+	public static final String DELETE_FILE = "delete from `board_file` where `parent`=?";
 }
 
 
