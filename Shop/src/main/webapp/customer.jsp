@@ -1,9 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="bean.CustomerBean"%>
+<%@page import="kr.co.farmstory1.bean.CustomerBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="db.DBCP"%>
+<%@page import="kr.co.farmstory1.db.DBCP"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%

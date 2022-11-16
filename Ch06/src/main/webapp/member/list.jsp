@@ -4,7 +4,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.util.List"%>
-<%@page import="bean.MemberBean"%>
+<%@page import="kr.co.farmstory1.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String host = "jdbc:mysql://127.0.0.1:3306/java1db";

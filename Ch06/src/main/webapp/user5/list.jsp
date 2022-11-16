@@ -1,5 +1,5 @@
 <%@page import="config.DBCP"%>
-<%@page import="bean.User5Bean"%>
+<%@page import="kr.co.farmstory1.bean.User5Bean"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>

@@ -21,7 +21,7 @@
 			*/
 		%>
 		
-		<jsp:useBean id="ub" class="bean.UserBean">
+		<jsp:useBean id="ub" class="kr.co.farmstory1.bean.UserBean">
 			<jsp:setProperty property="name" name="ub"/>
 			<jsp:setProperty property="birth" name="ub"/>
 			<jsp:setProperty property="addr" name="ub"/>

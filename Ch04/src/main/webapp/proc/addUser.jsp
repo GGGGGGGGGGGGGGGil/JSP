@@ -8,7 +8,7 @@
 	<body>
 		<h3>사용자 확인</h3>
 	
-		<jsp:useBean id="u2b" class="bean.User2Bean">
+		<jsp:useBean id="u2b" class="kr.co.farmstory1.bean.User2Bean">
 			<jsp:setProperty property="name" name="u2b"/>
 			<jsp:setProperty property="age" name="u2b"/>
 			<jsp:setProperty property="hp" name="u2b"/>

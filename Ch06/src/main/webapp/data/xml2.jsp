@@ -7,7 +7,7 @@
 <%@page import="kr.co.jboard1.db.JDBC"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="bean.UserBean"%>
+<%@page import="kr.co.farmstory1.bean.UserBean"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/xml;charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <% //XML은 까다로움, 페이지 지시자에서 인코딩 뒤에 trimDirectiveWhitespaces="true" 공백을 없애주는 지시자 추가!!
