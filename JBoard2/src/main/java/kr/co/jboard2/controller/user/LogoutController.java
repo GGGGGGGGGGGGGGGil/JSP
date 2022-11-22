@@ -1,20 +1,16 @@
 package kr.co.jboard2.controller.user;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.google.gson.JsonObject;
-
-import kr.co.jboard2.dao.UserDAO;
-
-@WebServlet("/user/checkNick.do")
-public class CheckNickController extends HttpServlet {
+@WebServlet("/user/logout.do")
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -23,15 +19,12 @@ public class CheckNickController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nick = req.getParameter("nick");
-		int result = UserDAO.getInstance().selectCountNick(nick);
+		HttpSession session = req.getSession();
 		
-		//JSON 출력
-		JsonObject json = new JsonObject();
-		json.addProperty("result", result);
+		session.removeAttribute("sessUser");
+		session.invalidate();
 		
-		PrintWriter writer = resp.getWriter();
-		writer.print(json.toString());
+		resp.sendRedirect("/JBoard2/user/login.do?success=201");
 	}
 	
 	@Override
