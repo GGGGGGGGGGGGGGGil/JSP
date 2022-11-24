@@ -2,42 +2,51 @@
 <jsp:include page="./_header.jsp/">
 <script src="/JBoard2/js/emailAuth.js"></script>
 <script>
+	
 	$(function(){
 		
-		$('.btnNext').click(function(e){
-	
-			if(isEmailAuthOk){
-				
+		
+		$('.btnNext').click(function(){
+			
+			console.log('here1 : ' + isEmailAuthOk);
+			
+			if(!isEmailAuthOk){
+				console.log('here2');
 				let name = $('input[name=name]').val();
 				let email = $('input[name=email]').val();
 				
 				let jsonData = {
-					"name" : name,
-					"email" : email
+					"name": name,
+					"email": email
 				};
 				
 				$.ajax({
 					url: '/JBoard2/user/findId.do',
-					type: 'POST',
+					type: 'post',
 					data: jsonData,
 					dataType: 'json',
 					success: function(data){
 						
 						if(data.result == 1){
-							location.href = "/Jboard2/user/findIdResult.do";
+							location.href = "/JBoard2/user/findIdResult.do";
 						}else{
 							alert('해당하는 사용자가 존재하지 않습니다.\n이름과 이메일을 다시 확인하십시요.');
 						}
+						
 					}
 				});
-				
+
 				return false;
+				
 			}else{
 				alert('이메일 인증을 하셔야 합니다.');
+				console.log('here3');
 				return false;
 			}
+			
 		});
 	});
+
 </script>
         <main id="user">
             <section class="find findId">

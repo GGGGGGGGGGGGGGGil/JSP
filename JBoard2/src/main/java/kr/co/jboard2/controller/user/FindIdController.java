@@ -33,7 +33,7 @@ public class FindIdController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String name = req.getParameter("name");
+		String name  = req.getParameter("name");
 		String email = req.getParameter("email");
 		
 		UserVO vo = UserDAO.getInstance().selectUserForFindId(name, email);
