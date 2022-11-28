@@ -17,7 +17,7 @@ import kr.co.jboard2.dao.UserDAO;
 import kr.co.jboard2.vo.UserVO;
 
 @WebServlet("/user/findId.do")
-public class FindIdController extends HttpServlet {
+public class FindIdController extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -32,21 +32,20 @@ public class FindIdController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	
 		String name  = req.getParameter("name");
 		String email = req.getParameter("email");
 		
 		UserVO vo = UserDAO.getInstance().selectUserForFindId(name, email);
 		
-		//JSON 출력
+		// JSON 출력
 		JsonObject json = new JsonObject();
 		
 		if(vo != null) {
 			json.addProperty("result", 1);
 			
-			//세션 로그인에만 사용되는거 아님!!!
-			HttpSession sess = req.getSession();
-			sess.setAttribute("sessUserForFindId", vo);
+		    HttpSession sess = req.getSession();
+		    sess.setAttribute("sessUserForFindId", vo);
 			
 		}else {
 			json.addProperty("result", 0);
@@ -55,5 +54,13 @@ public class FindIdController extends HttpServlet {
 		PrintWriter writer = resp.getWriter();
 		writer.print(json.toString());
 	}
-
 }
+
+
+
+
+
+
+
+
+

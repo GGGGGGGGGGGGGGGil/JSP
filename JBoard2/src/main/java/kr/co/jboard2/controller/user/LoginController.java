@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user/login.jsp");
-		dispatcher.forward(req, resp);
+		dispatcher.forward(req, resp);	
 	}
 	
 	@Override
@@ -47,17 +47,17 @@ public class LoginController extends HttpServlet {
 			HttpSession session = req.getSession(); // 현재 클라이언트 세션 구함
 			session.setAttribute("sessUser", vo);
 			
-			//자동로그인 확인
+			// 자동로그인 처리
 			if(auto != null) {
 				String sessId = session.getId();
 				
-				//쿠키생성
+				// 쿠키생성
 				Cookie cookie = new Cookie("SESSID", sessId);
-				cookie.setPath("/"); //루트(/)로 해놔야 모든 요청에 응답함
+				cookie.setPath("/");
 				cookie.setMaxAge(60*60*24*3);
 				resp.addCookie(cookie);
 				
-				//세션정보 데이터베이스 저장
+				// 세션정보 데이터베이스 저장
 				dao.updateUserForSession(uid, sessId);
 			}
 			

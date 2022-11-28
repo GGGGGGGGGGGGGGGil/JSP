@@ -1,6 +1,6 @@
 /**
- * 날짜 : 2022/11/22
- * 이름 : 길은섭
+ * 날짜 : 2022/10/24
+ * 이름 : 김철학
  * 내용 : 회원가입 입력데이터 유효성 검증
  */
 // 데이터 검증에 사용할 정규표현식
@@ -14,6 +14,7 @@ let regPass  = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 // 폼 데이터 검증 결과 상태변수
 let isUidOk   = false;
 let isPassOk  = false;
+let isPassMatch = false;
 let isNameOk  = false;
 let isNickOk  = false;
 let isEmailOk = false;
@@ -87,6 +88,7 @@ $(function(){
 			
 		}else{
 			isPassOk = false;
+			isPassMatch = true;
 			$('.resultPass').css('color', 'red').text('비밀번호가 일치하지 않습니다.');
 		}			
 	});
@@ -229,7 +231,7 @@ $(function(){
 		if(code == receivedCode){
 			isEmailAuthCodeOk = true;
 			$('input[name=email]').attr('readonly', true);
-			$('.resultEmail').css('color', 'green').text('이메일이 인증 되었습니다.');				
+			$('.resultEmail').text('이메일이 인증 되었습니다.');				
 			$('.auth').hide();
 		}else{
 			isEmailAuthCodeOk = false;
@@ -296,3 +298,4 @@ $(function(){
 		return true;
 	});
 });
+ 
